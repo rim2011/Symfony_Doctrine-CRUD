@@ -1,0 +1,84 @@
+gmc_first_homepage:
+    path:     /
+    defaults: { _controller: gmcFirstBundle:Default:index }
+
+hello_the_world:
+    path:     /hello-world
+    defaults: { _controller: gmcFirstBundle:First:second }
+
+gmc_toDoList:
+    path: /list
+    defaults: { _controller: gmcFirstBundle:ToDo:list}
+
+gmc_addToDo:
+     path: /add/{id}/{todo}
+     defaults: { _controller: gmcFirstBundle:ToDo:addToDo}
+
+gmc_deleteToDo:
+      path: /delete/{id}
+      defaults: { _controller: gmcFirstBundle:ToDo:deleteToDo}
+
+gmc_resetToDo:
+        path: /reset
+        defaults: { _controller: gmcFirstBundle:ToDo:resetToDo}
+
+gmc_listCv:
+      path: /listCv/{nom}/{prenom}/{age}/{section}
+      defaults: { _controller: gmcFirstBundle:First:listCv}
+
+
+gmc_listCvDefault:
+  path: /listCvDefault/{nom}/{prenom}/{age}/{section}/{_locale}/{_format}
+  defaults: { _controller: gmcFirstBundle:First:listCvDefault, _format: html}
+  requirements:
+     age: \d{2}
+     section: PHP|Js
+     _locale: fr|en
+
+gmc_cv:
+  path: /cv/{nom}/{prenom}/{age}/{section}
+  defaults: { _controller: gmcFirstBundle:First:cv}
+
+gmc_cvs:
+  path: /cvs
+  defaults: { _controller: gmcFirstBundle:Personne:addPerson}
+
+gmc_listAgeInterval:
+  path: /listAgeInterval/{ageMin}/{ageMax}
+  defaults: { _controller:  gmcFirstBundle:PersonneDb:listPersonAgeInterval}
+
+gmc_addPerson:
+  path: /addPerson/{nom}/{prenom}/{age}/{path}
+  defaults: { _controller: gmcFirstBundle:PersonneDb:add}
+  requirements:
+      age: \d{2}
+      path: .*\.jpg$|.*\.jpeg$|.*\.png$
+
+gmc_updatePerson:
+  path: /updatePerson/{personne}/{nom}/{prenom}/{age}/{path}
+  defaults: { _controller: gmcFirstBundle:PersonneDb:update}
+  requirements:
+    age: \d{2}
+
+gmc_findAll:
+  path: /listPerson
+  defaults: { _controller: gmcFirstBundle:PersonneDb:listPerson}
+
+gmc_listOnePerson:
+  path: /listOnePerson/{nom}/{prenom}/{age}/{path}
+  defaults: { _controller: gmcFirstBundle:PersonneDb:listOnePerson}
+  requirements:
+    age: \d{2}
+    path: .*\.jpg$|.*\.jpeg$|.*\.png$
+
+gmc_deletePerson:
+  path: /deletePerson/{id}
+  defaults: { _controller: gmcFirstBundle:PersonneDb:deletePerson}
+
+gmc_findPersonName:
+  path: /findPersonName/{nom}
+  defaults: { _controller: gmcFirstBundle:PersonneDb:findName}
+
+gmc_findPersonAge:
+  path: /findPersonAge/{age}
+  defaults: { _controller: gmcFirstBundle:PersonneDb:findAge}
